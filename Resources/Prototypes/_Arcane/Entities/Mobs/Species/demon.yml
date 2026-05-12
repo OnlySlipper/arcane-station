@@ -17,7 +17,7 @@
         Asphyxiation: 0.5
   - type: Icon
     sprite: _Arcane/Mobs/Species/Demon/parts.rsi
-    state: full
+    state: full_m
   - type: Body
     prototype: Demon
   - type: Butcherable
@@ -60,18 +60,6 @@
     baseSprintSpeed: 4.5
   - type: Inventory
     speciesId: demon
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _White/Mobs/Species/displacement.rsi
-            state: jumpsuit-female
-    displacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _White/Mobs/Species/displacement.rsi
-            state: jumpsuit
 
 - type: entity
   save: false
@@ -85,15 +73,3 @@
     species: Demon
   - type: Inventory
     speciesId: demon
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _White/Mobs/Species/displacement.rsi
-            state: jumpsuit-female
-    displacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _White/Mobs/Species/displacement.rsi
-            state: jumpsuit

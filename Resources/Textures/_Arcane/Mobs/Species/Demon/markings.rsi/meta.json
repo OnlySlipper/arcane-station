@@ -230,6 +230,10 @@
             ]
         },
         {
+            "name": "tail_broom",
+            "directions": 4
+        },
+        {
             "name": "tail_broom_animated",
             "directions": 4,
             "delays": [

@@ -39,6 +39,15 @@
   speciesRestriction: [Demon]
   sprites:
   - sprite: _Arcane/Mobs/Species/Demon/markings.rsi
+    state: tail_broom
+
+- type: marking
+  id: DemonTailBroomAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Arcane/Mobs/Species/Demon/markings.rsi
     state: tail_broom_animated
 
 - type: marking
