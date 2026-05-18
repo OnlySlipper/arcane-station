@@ -18,7 +18,8 @@ public sealed class EroticOrganSpawnSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<HumanoidAppearanceComponent, MapInitEvent>(OnMapInit);
+        // Run after SharedBodySystem so body parts are already spawned when we look for them.
+        SubscribeLocalEvent<HumanoidAppearanceComponent, MapInitEvent>(OnMapInit, after: [typeof(SharedBodySystem)]);
         SubscribeLocalEvent<HumanoidAppearanceComponent, ProfileLoadFinishedEvent>(OnProfileLoaded);
         SubscribeLocalEvent<HumanoidAppearanceComponent, SexChangedEvent>(OnSexChanged);
     }
