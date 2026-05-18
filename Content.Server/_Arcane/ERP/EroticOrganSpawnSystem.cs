@@ -18,12 +18,19 @@ public sealed class EroticOrganSpawnSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<HumanoidAppearanceComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<HumanoidAppearanceComponent, ProfileLoadFinishedEvent>(OnProfileLoaded);
         SubscribeLocalEvent<HumanoidAppearanceComponent, SexChangedEvent>(OnSexChanged);
     }
 
+    private void OnMapInit(EntityUid uid, HumanoidAppearanceComponent humanoid, MapInitEvent args)
+    {
+        SpawnEroticOrgans(uid, humanoid.Sex);
+    }
+
     private void OnProfileLoaded(EntityUid uid, HumanoidAppearanceComponent humanoid, ProfileLoadFinishedEvent args)
     {
+        RemoveEroticOrgans(uid);
         SpawnEroticOrgans(uid, humanoid.Sex);
     }
 
