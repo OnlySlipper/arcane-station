@@ -195,6 +195,7 @@ using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
 using Content.Goobstation.Common.CCVar; // Goob Station - Barks
 using Content.Goobstation.Common.Barks; // Goob Station - Barks
+using Content.Shared._Arcane.ERP; // Arcane-edit
 namespace Content.Client.Lobby.UI
 {
     [GenerateTypedNameReferences]
@@ -626,6 +627,23 @@ namespace Content.Client.Lobby.UI
             };
 
             #endregion SpawnPriority
+
+            // Arcane-Start
+            #region ErpPreference
+
+            foreach (var value in Enum.GetValues<ErpPreference>())
+            {
+                ErpPreferenceButton.AddItem(Loc.GetString($"humanoid-profile-editor-erp-preference-{value.ToString().ToLower()}"), (int) value);
+            }
+
+            ErpPreferenceButton.OnItemSelected += args =>
+            {
+                ErpPreferenceButton.SelectId(args.Id);
+                SetErpPreference((ErpPreference) args.Id);
+            };
+
+            #endregion ErpPreference
+            // Arcane-End
 
             #region Eyes
 
@@ -1349,6 +1367,7 @@ namespace Content.Client.Lobby.UI
             UpdateGenderControls();
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
+            UpdateErpPreferenceControls(); // Arcane-edit
             UpdateAgeEdit();
             UpdateEyePickers();
             UpdateSaveButton();
@@ -1958,6 +1977,14 @@ namespace Content.Client.Lobby.UI
             SetDirty();
         }
 
+        // Arcane-Start
+        private void SetErpPreference(ErpPreference preference)
+        {
+            Profile = Profile?.WithErpPreference(preference);
+            SetDirty();
+        }
+        // Arcane-End
+
         // Goob Station - Start
         private void SetProfileHeight(float height)
         {
@@ -2225,6 +2252,16 @@ namespace Content.Client.Lobby.UI
 
             SpawnPriorityButton.SelectId((int) Profile.SpawnPriority);
         }
+
+        // Arcane-Start
+        private void UpdateErpPreferenceControls()
+        {
+            if (Profile == null)
+                return;
+
+            ErpPreferenceButton.SelectId((int) Profile.ErpPreference);
+        }
+        // Arcane-End
 
         // begin Goobstation: port EE height/width sliders
         private void UpdateHeightWidthSliders()
