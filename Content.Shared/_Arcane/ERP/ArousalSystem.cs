@@ -1,11 +1,10 @@
-using Content.Shared._Arcane.ERP;
 using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Arcane.ERP;
+namespace Content.Shared._Arcane.ERP;
 
-public sealed class ArousalSystem : EntitySystem
+public sealed class SharedArousalSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
