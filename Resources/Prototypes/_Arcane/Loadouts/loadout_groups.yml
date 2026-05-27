@@ -1,0 +1,10 @@
+- type: loadoutGroup
+  id: Underwear
+  name: loadout-group-underwear
+  minLimit: 0
+  loadouts:
+  - pantiesSpiderman
+  - boxerwolf
+  - boxerelephant
+  - boxerfrance
+  - boxermaidwithsuspenders
