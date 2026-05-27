@@ -13,8 +13,8 @@
 
 - type: marking
   id: CatEars
-  bodyPart: Special
-  markingCategory: Special
+  bodyPart: HeadTop
+  markingCategory: HeadTop
   speciesRestriction: [Human, Dwarf, Demon, Felinid]
   coloring:
     default:
