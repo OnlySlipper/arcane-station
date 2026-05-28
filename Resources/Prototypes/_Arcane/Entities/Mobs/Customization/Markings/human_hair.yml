@@ -1,0 +1,15 @@
+- type: marking
+  id: HumanHairManLong
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Arcane/Mobs/Customization/hair.rsi
+      state: man_long
+
+- type: marking
+  id: HumanHairShortMullet
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Arcane/Mobs/Customization/hair.rsi
+      state: short_mullet
