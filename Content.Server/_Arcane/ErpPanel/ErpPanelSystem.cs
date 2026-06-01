@@ -31,7 +31,7 @@ public sealed partial class ErpPanelSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
-    private EntProtoId _heartsProto = new("EffectHearts");
+    private static readonly EntProtoId _heartsProto = new("EffectHearts");
 
     public override void Initialize()
     {
@@ -136,6 +136,12 @@ public sealed partial class ErpPanelSystem : EntitySystem
 
         if (user == target)
             return;
+
+        if (interaction.UserArouse > 0 && !_arousal.CanAddArousal(user))
+        {
+            _popup.PopupEntity(Loc.GetString("erp-refractory-self"), user, user, PopupType.SmallCaution);
+            return;
+        }
 
         _arousal.AddArousal(user, interaction.UserArouse * customArousal / 100);
         ProccessMoan(user, customMoaning);

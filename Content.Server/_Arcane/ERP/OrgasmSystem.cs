@@ -40,21 +40,22 @@ public sealed class OrgasmSystem : EntitySystem
         if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoid))
             return;
 
-        DoOrgasmEffects(ent, humanoid.Gender);
+        DoOrgasmEffects(ent, humanoid);
     }
 
-    public void DoOrgasmEffects(EntityUid uid, Gender gender)
+    public void DoOrgasmEffects(EntityUid uid, HumanoidAppearanceComponent? humanoid = null)
     {
+        Resolve(uid, ref humanoid, false);
+
         Spawn(HeartsProto, _transform.GetMapCoordinates(uid));
-        PlayOrgasmSound(uid, gender);
+        PlayOrgasmSound(uid, humanoid?.Gender ?? Gender.Female);
 
         if (_prototype.TryIndex(OrgasmMessagesDataset, out var dataset))
             _chat.TrySendInGameICMessage(uid, Loc.GetString(_random.Pick(dataset.Values)), InGameICChatType.Emote, false);
 
         _popup.PopupEntity(Loc.GetString("orgasm-popup-self"), uid, uid, PopupType.MediumCaution);
 
-        if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid)
-            && humanoid.Sex is Sex.Male or Sex.Futanari)
+        if (humanoid?.Sex is Sex.Male or Sex.Futanari)
             SpawnEjaculation(uid);
 
         var weakness = EnsureComp<OrgasmWeaknessComponent>(uid);
