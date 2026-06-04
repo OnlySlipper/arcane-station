@@ -379,16 +379,11 @@
       Extinguish: [ Touch ]
       Acidic: [Touch, Ingestion, Eyes] # Goobstation
     reactions:
-    - reagents: [Water, SpaceCleaner]
+    - reagents: [Water, SpaceCleaner, SoapReagent] # Arcane
       methods: [Touch]
       effects:
       - !type:WashCreamPieReaction
-      # Arcane-start
-    - reagents: [Water, SpaceCleaner, SoapReagent]
-      methods: [Touch]
-      effects:
-      - !type:WashCumOverlayReaction
-      # Arcane-end
+      - !type:WashCumOverlayReaction # Arcane
   - type: StatusEffects
     allowed:
     - Stutter

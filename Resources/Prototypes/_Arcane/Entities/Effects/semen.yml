@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: EffectSemenSplat
   categories: [ HideSpawnMenu ]
   components:
@@ -17,34 +17,20 @@
 
 - type: entity
   id: PuddleSemenBase
+  parent: PuddleTemporary
   abstract: true
   categories: [ HideSpawnMenu ]
-  placement:
-    mode: SnapgridCenter
   components:
-  - type: Transform
-    anchored: true
-    noRot: false
   - type: Sprite
     noRot: true
     drawdepth: Puddles
+    color: white
     sprite: /Textures/_Arcane/Effects/genitals_effects.rsi
-    state: semen1
-  - type: Clickable
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      slipFixture:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        mask:
-        - ItemMask
-        layer:
-        - SlipLayer
-        hard: false
-  - type: Puddle
+    layers:
+    - state: semen1
+  - type: IconSmooth
+    key: semen_puddles
+    mode: NoSprite
   - type: SolutionContainerManager
     solutions:
       puddle:
@@ -52,14 +38,10 @@
         reagents:
         - ReagentId: Semen
           Quantity: 10
-  - type: MixableSolution
-    solution: puddle
-  - type: Appearance
-  - type: ExaminableSolution
-    solution: puddle
   - type: Tag
     tags:
     - HideContextMenu
+    - DNASolutionScannable
 
 - type: entity
   id: PuddleSemen1
@@ -70,67 +52,52 @@
   parent: PuddleSemenBase
   components:
   - type: Sprite
-    state: semen2
+    layers:
+    - state: semen2
 
 - type: entity
   id: PuddleSemen3
   parent: PuddleSemenBase
   components:
   - type: Sprite
-    state: semen3
+    layers:
+    - state: semen3
 
 - type: entity
   id: PuddleSemen4
   parent: PuddleSemenBase
   components:
   - type: Sprite
-    state: semen4
+    layers:
+    - state: semen4
 
 - type: entity
   id: PuddleFemCumBase
+  parent: PuddleTemporary
   abstract: true
   categories: [ HideSpawnMenu ]
-  placement:
-    mode: SnapgridCenter
   components:
-  - type: Transform
-    anchored: true
-    noRot: false
   - type: Sprite
     noRot: true
     drawdepth: Puddles
+    color: white
     sprite: /Textures/_Arcane/Effects/genitals_effects.rsi
-    state: fem1
-  - type: Clickable
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      slipFixture:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        mask:
-        - ItemMask
-        layer:
-        - SlipLayer
-        hard: false
-  - type: Puddle
+    layers:
+    - state: fem1
+  - type: IconSmooth
+    key: femcum_puddles
+    mode: NoSprite
   - type: SolutionContainerManager
     solutions:
       puddle:
         maxVol: 1000
         reagents:
-        - ReagentId: Semen
+        - ReagentId: FemCum
           Quantity: 10
-  - type: MixableSolution
-    solution: puddle
-  - type: Appearance
-  - type: ExaminableSolution
-    solution: puddle
   - type: Tag
     tags:
     - HideContextMenu
+    - DNASolutionScannable
 
 - type: entity
   id: PuddleFemCum1
@@ -141,18 +108,21 @@
   parent: PuddleFemCumBase
   components:
   - type: Sprite
-    state: fem2
+    layers:
+    - state: fem2
 
 - type: entity
   id: PuddleFemCum3
   parent: PuddleFemCumBase
   components:
   - type: Sprite
-    state: fem3
+    layers:
+    - state: fem3
 
 - type: entity
   id: PuddleFemCum4
   parent: PuddleFemCumBase
   components:
   - type: Sprite
-    state: fem4
+    layers:
+    - state: fem4

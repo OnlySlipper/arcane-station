@@ -1,6 +1,10 @@
-﻿using Content.Server.Chat.Systems;
+using Content.Server.Body.Systems;
+using Content.Server.Chat.Systems;
+using Content.Server.Forensics;
 using Content.Shared._Arcane.ERP;
 using Content.Shared.Chat;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid;
 using Content.Shared.Popups;
@@ -18,16 +22,18 @@ namespace Content.Server._Arcane.ERP;
 public sealed class OrgasmSystem : EntitySystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly ForensicsSystem _forensics = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
     private static readonly EntProtoId HeartsProto = "EffectHearts";
-    private static readonly EntProtoId SemenSplatProto = "EffectSemenSplat";
 
     private static readonly EntProtoId[] SemenPuddleProtos =
     [
@@ -76,13 +82,25 @@ public sealed class OrgasmSystem : EntitySystem
 
     private void SpawnEjaculation(EntityUid uid, Sex sex)
     {
+        if (sex is Sex.Unsexed)
+            return;
+
         var puddleProtos = sex is Sex.Female ? FemCumPuddleProtos : SemenPuddleProtos;
 
         var xform = Transform(uid);
         var forward = xform.LocalRotation.ToVec();
         var coords = xform.Coordinates.Offset(forward * 0.6f);
-        Spawn(SemenSplatProto, coords);
-        Spawn(_random.Pick(puddleProtos), coords);
+        var puddle = Spawn(_random.Pick(puddleProtos), coords);
+        _forensics.TransferDna(puddle, uid, false);
+
+        var dnaData = _bloodstream.GetEntityBloodData(uid);
+        if (dnaData.Count > 0 && _solutionContainer.TryGetSolution(puddle, "puddle", out _, out var puddleSolution))
+        {
+            foreach (var reagent in puddleSolution.Contents)
+            {
+                reagent.Reagent.EnsureReagentData().AddRange(dnaData);
+            }
+        }
 
         AddCumOverlay(uid);
 
