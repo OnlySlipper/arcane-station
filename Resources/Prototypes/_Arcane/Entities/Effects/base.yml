@@ -29,9 +29,9 @@
     - HideContextMenu
 
 - type: entity
-  id: PuddleSemenBase
-  parent: PuddleTemporary
   abstract: true
+  parent: PuddleTemporary
+  id: PuddleSemenBase
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -57,9 +57,9 @@
     - DNASolutionScannable
 
 - type: entity
-  id: PuddleFemCumBase
-  parent: PuddleTemporary
   abstract: true
+  parent: PuddleTemporary
+  id: PuddleFemCumBase
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
