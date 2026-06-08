@@ -33,6 +33,7 @@ marking-HumanoidXenoTracheasRavager = Трахеи разрушителя
 marking-HumanoidXenoTracheasBoiler = Трахеи бойлера
 marking-HumanoidXenoTracheasCrusher = Трахеи крушителя
 marking-HumanoidXenoTracheasNeomorph = Трахеи неоморфа
+marking-HumanoidXenoTracheasCarrier = Трахеи носителя
 marking-HumanoidXenoLegsPredalien = Ноги предалиена
 marking-HumanoidXenoLegsMuscles = "Мышцы"
 marking-HumanoidXenoArmsPredalien = Руки предалиена

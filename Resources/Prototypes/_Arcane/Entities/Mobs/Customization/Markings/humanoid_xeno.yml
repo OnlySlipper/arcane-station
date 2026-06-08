@@ -92,9 +92,9 @@
   markingCategory: Tail
   speciesRestriction: [HumanoidXeno]
   sprites:
-  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/tail.rsi
+  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/long_tails.rsi
     state: crusher_tail
-  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/tail.rsi
+  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/long_tails.rsi
     state: crusher_tail_grad
 
 - type: marking
@@ -103,9 +103,9 @@
   markingCategory: Tail
   speciesRestriction: [HumanoidXeno]
   sprites:
-  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/tail.rsi
+  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/long_tails.rsi
     state: queen_long_tail
-  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/tail.rsi
+  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/long_tails.rsi
     state: queen_long_tail_grad
 
 # Head
@@ -392,6 +392,15 @@
   sprites:
   - sprite: _Arcane/Mobs/Customization/HumanoidXeno/tracheas.rsi
     state: neomorph_tubes
+
+- type: marking
+  id: HumanoidXenoTracheasCarrier
+  bodyPart: Chest
+  markingCategory: Tracheas
+  speciesRestriction: [HumanoidXeno]
+  sprites:
+  - sprite: _Arcane/Mobs/Customization/HumanoidXeno/long_tracheas.rsi
+    state: carrier_tubes
 
 # Legs
 
