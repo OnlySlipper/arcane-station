@@ -1,9 +1,9 @@
 - type: loadout
   id: WarmBra
   equipment:
-    underwear: ClothingUndershirtWarmBra
+    undershirt: ClothingUndershirtWarmBra
 
 - type: loadout
   id: CowSwimsuit
   equipment:
-    underwear: ClothingUndershirtCowSwimsuit
+    undershirt: ClothingUndershirtCowSwimsuit

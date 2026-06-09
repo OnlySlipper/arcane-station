@@ -19,7 +19,7 @@
 - type: entity
   parent: ClothingBraBase
   id: ClothingUndershirtNippleStickers
-  name: nipple strickers
+  name: nipple stickers
   description: Stickers for your most perverted pleasures.
   components:
   - type: Sprite
