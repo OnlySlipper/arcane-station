@@ -13,7 +13,7 @@
   id: FemaleVulpkaninHowls
   files:
     - /Audio/_DV/Voice/Vulpkanin/howl.ogg
-    - /Audio/_Arcane/Voice/Vulpcanin/female_wolf_howl.ogg
+    - /Audio/_Arcane/Voice/Vulpkanin/female_wolf_howl.ogg
 
 - type: soundCollection
   id: FemaleVulpkaninScreams
