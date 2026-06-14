@@ -18,6 +18,7 @@ public sealed partial class AutoCleaningSystem : EntitySystem
     private static TimeSpan _updateInterval = TimeSpan.FromMinutes(30);
     private static TimeSpan _warningWaiting = TimeSpan.FromSeconds(30);
     private static HashSet<ProtoId<TagPrototype>> _cleaningTags = ["Trash", "Cartridge"];
+    private static HashSet<ProtoId<TagPrototype>> _disallowedTags = ["Cigarette"];
 
 
     public override void Initialize()
@@ -71,7 +72,7 @@ public sealed partial class AutoCleaningSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var tag))
         {
-            if (tag.Tags.Intersect(_cleaningTags).Any())
+            if (tag.Tags.Intersect(_cleaningTags).Any() && !tag.Tags.Intersect(_disallowedTags).Any())
             {
                 QueueDel(uid);
             }
