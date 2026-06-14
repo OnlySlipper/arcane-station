@@ -1,4 +1,7 @@
-﻿ent-ClothingUniformJumpskirtMaidBlue = синее платье горничной
+﻿ent-ClothingUniformDressesWithFlowers = платья с цветами
+    .desc = Чёрное платье с яркими цветами. Чего-то явно не хватает.
+
+ent-ClothingUniformJumpskirtMaidBlue = синее платье горничной
     .desc = Аккуратное синее платье горничной с белым фартуком.
 
 ent-ClothingUniformJumpskirtMaidLong = длинное платье горничной

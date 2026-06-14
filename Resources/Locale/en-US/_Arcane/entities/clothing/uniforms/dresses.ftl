@@ -1,4 +1,7 @@
-﻿ent-ClothingUniformJumpskirtMaidBlue = maid dress blue
+﻿ent-ClothingUniformDressesWithFlowers = dresses with flowers
+    .desc = Black dress with bright flowers. Something is clearly missing.
+
+ent-ClothingUniformJumpskirtMaidBlue = maid dress blue
     .desc = A neat blue maid dress with a white apron.
 
 ent-ClothingUniformJumpskirtMaidLong = maid dress long

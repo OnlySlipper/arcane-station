@@ -1,4 +1,5 @@
 using Content.Shared.Clothing;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Foldable;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Components;
@@ -17,15 +18,27 @@ public sealed class FoldedHandsClothingSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<FoldedHandsClothingComponent, FoldedEvent>(OnFolded);
+        SubscribeLocalEvent<FoldedHandsClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<FoldedHandsClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
     }
 
     private void OnFolded(Entity<FoldedHandsClothingComponent> ent, ref FoldedEvent args)
     {
+        if (!TryGetWearer(ent, out var wearer))
+            return;
+
         if (args.IsFolded)
-            TryBlockHands(ent);
+            BlockHands(ent, wearer);
         else
-            TryUnblockHands(ent);
+            _virtualItem.DeleteInHandsMatching(wearer, ent.Owner);
+    }
+
+    private void OnEquipped(Entity<FoldedHandsClothingComponent> ent, ref ClothingGotEquippedEvent args)
+    {
+        if (!TryComp<FoldableComponent>(ent, out var foldable) || !foldable.IsFolded)
+            return;
+
+        BlockHands(ent, args.Wearer);
     }
 
     private void OnUnequipped(Entity<FoldedHandsClothingComponent> ent, ref ClothingGotUnequippedEvent args)
@@ -33,11 +46,8 @@ public sealed class FoldedHandsClothingSystem : EntitySystem
         _virtualItem.DeleteInHandsMatching(args.Wearer, ent.Owner);
     }
 
-    private void TryBlockHands(Entity<FoldedHandsClothingComponent> ent)
+    private void BlockHands(Entity<FoldedHandsClothingComponent> ent, EntityUid wearer)
     {
-        if (!TryGetWearer(ent, out var wearer))
-            return;
-
         foreach (var hand in _hands.EnumerateHands(wearer))
         {
             _hands.TryDrop(wearer, hand);
@@ -46,22 +56,14 @@ public sealed class FoldedHandsClothingSystem : EntitySystem
         }
     }
 
-    private void TryUnblockHands(Entity<FoldedHandsClothingComponent> ent)
+    private bool TryGetWearer(Entity<FoldedHandsClothingComponent> ent, out EntityUid wearer)
     {
-        if (!TryGetWearer(ent, out var wearer))
-            return;
-
-        _virtualItem.DeleteInHandsMatching(wearer, ent.Owner);
-    }
-
-    private bool TryGetWearer(EntityUid item, out EntityUid wearer)
-    {
-        if (!_container.TryGetContainingContainer(item, out var cont))
-        {
-            wearer = default;
+        wearer = default;
+        // InSlot is non-null only when the item is in an inventory clothing slot, not a backpack or pocket
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || clothing.InSlot == null)
             return false;
-        }
-
+        if (!_container.TryGetContainingContainer(ent.Owner, out var cont))
+            return false;
         wearer = cont.Owner;
         return true;
     }
