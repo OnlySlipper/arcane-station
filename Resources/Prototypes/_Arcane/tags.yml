@@ -39,3 +39,9 @@
 
 - type: Tag
   id: FlowerPinkTulip
+
+- type: Tag
+  id: InfiniteDormItem
+
+- type: Tag
+  id: InfiniteDormItemBlock
