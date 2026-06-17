@@ -48,12 +48,10 @@ public sealed class FoldedHandsClothingSystem : EntitySystem
 
     private void BlockHands(Entity<FoldedHandsClothingComponent> ent, EntityUid wearer)
     {
-        // Snapshot the hand list before spawning virtual items to avoid mutating
-        // the hands collection while iterating it.
-        var handCount = _hands.EnumerateHands(wearer).Count();
-        for (var i = 0; i < handCount; i++)
+        foreach (var hand in _hands.EnumerateHands(wearer))
         {
-            if (_virtualItem.TrySpawnVirtualItemInHand(ent.Owner, wearer, out var vItem, dropOthers: true))
+            _hands.TryDrop(wearer, hand);
+            if (_virtualItem.TrySpawnVirtualItemInHand(ent.Owner, wearer, out var vItem))
                 EnsureComp<UnremoveableComponent>(vItem.Value);
         }
     }
