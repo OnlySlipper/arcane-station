@@ -20,7 +20,7 @@ ent-ClothingUniformJumpskirtSuccubusWhite = белое платье суккуб
     .desc = Белоснежное платье, достойное соблазнительного демона.
 
 ent-ClothingUniformJumpskirtTangoDress = платье для танго
-    .desc = Страстное платье, идеальное для танца танго.
+    .desc = Страстное красное платье, идеальное для танца танго.
 
 ent-ClothingUniformJumpskirtXenoDress = ксено-платье
     .desc = Платье с отчётливо инопланетной эстетикой.

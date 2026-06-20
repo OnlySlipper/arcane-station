@@ -20,7 +20,7 @@ ent-ClothingUniformJumpskirtSuccubusWhite = succubus dress white
     .desc = A pristine white dress fit for a seductive demon.
 
 ent-ClothingUniformJumpskirtTangoDress = tango dress
-    .desc = A passionate dress perfect for dancing the tango.
+    .desc = A passionate red dress perfect for dancing the tango.
 
 ent-ClothingUniformJumpskirtXenoDress = xeno dress
     .desc = A dress with a distinctly alien aesthetic.

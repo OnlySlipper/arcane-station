@@ -17,9 +17,19 @@ public sealed class FoldedHandsClothingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<FoldedHandsClothingComponent, FoldAttemptEvent>(OnFoldAttempt);
         SubscribeLocalEvent<FoldedHandsClothingComponent, FoldedEvent>(OnFolded);
         SubscribeLocalEvent<FoldedHandsClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<FoldedHandsClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
+    }
+
+    private void OnFoldAttempt(Entity<FoldedHandsClothingComponent> ent, ref FoldAttemptEvent args)
+    {
+        if (args.Cancelled || args.Comp.IsFolded || !TryGetWearer(ent, out var wearer))
+            return;
+
+        if (!CanBlockHands(wearer))
+            args.Cancelled = true;
     }
 
     private void OnFolded(Entity<FoldedHandsClothingComponent> ent, ref FoldedEvent args)
@@ -50,10 +60,26 @@ public sealed class FoldedHandsClothingSystem : EntitySystem
     {
         foreach (var hand in _hands.EnumerateHands(wearer))
         {
-            _hands.TryDrop(wearer, hand);
+            if (_hands.TryGetHeldItem(wearer, hand, out _) && !_hands.TryDrop(wearer, hand))
+                continue;
+
             if (_virtualItem.TrySpawnVirtualItemInHand(ent.Owner, wearer, out var vItem))
                 EnsureComp<UnremoveableComponent>(vItem.Value);
         }
+    }
+
+    private bool CanBlockHands(EntityUid wearer)
+    {
+        foreach (var hand in _hands.EnumerateHands(wearer))
+        {
+            if (!_hands.TryGetHeldItem(wearer, hand, out _))
+                continue;
+
+            if (!_hands.CanDropHeld(wearer, hand))
+                return false;
+        }
+
+        return true;
     }
 
     private bool TryGetWearer(Entity<FoldedHandsClothingComponent> ent, out EntityUid wearer)
