@@ -30,6 +30,9 @@ public sealed partial class PanelInteractionPrototype : IPrototype
     public List<ResPath> Sounds = new();
 
     [DataField]
+    public HashSet<string> Tags = new();
+
+    [DataField]
     public TimeSpan Cooldown = TimeSpan.FromSeconds(3);
 
     [DataField]

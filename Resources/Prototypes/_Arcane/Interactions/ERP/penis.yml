@@ -17,6 +17,8 @@
   - обхватывает губами головку члена $target и нежно посасывает.
   - захватывает член $target губами и ритмично скользит по нему.
   icon: _Arcane/Interface/ErpPanel/cock_tongue_fap.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -47,6 +49,8 @@
   - ритмично передвигает плазму у члена $target.
   - ласкает головку члена $target своей плазмой.
   icon: _Arcane/Interface/ErpPanel/cock_slime_sex.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:SpeciesRequirement
     species:
@@ -74,6 +78,8 @@
   - наяривает свой пенис.
   - обхватывает член рукой и активно ласкает его.
   icon: _Arcane/Interface/ErpPanel/cock_fap.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -99,6 +105,8 @@
   - плавно водит ножкой по пенису $target.
   - гладит ступнёй пенис $target.
   icon: _Arcane/Interface/ErpPanel/cock_footjob.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -123,6 +131,8 @@
   - ударяет пенисом по члену $target.
   - борется членами с $target, как на мечах.
   icon: _Arcane/Interface/ErpPanel/cock_swordmanship.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -144,6 +154,8 @@
   - обвивает хвостиком член $target.
   - надрачивает хвостом член $target.
   icon: _Arcane/Interface/ErpPanel/cock_tail_fap.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -177,6 +189,8 @@
   - проталкивает член $target между ляжками.
   - трётся ляжками о член $target.
   icon: _Arcane/Interface/ErpPanel/legs_cock_fuck.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -208,6 +222,8 @@
   - страстно делает минет $target, не останавливаясь.
   - быстро работает ртом и рукой на члене $target.
   icon: _Arcane/Interface/ErpPanel/cock_blowjob.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -215,7 +231,7 @@
 
 - type: panelInteraction
   id: CockNearAssTail
-  category: Penis
+  category: Butt
   name: Водить членом по попе с хвостом
   userArouse: 10
   targetArouse: 5
@@ -228,6 +244,8 @@
   - проводит членом по булкам $target, хвостом помогая.
   - трётся членом о ягодицы $target, хвостом обвивая.
   icon: _Arcane/Interface/ErpPanel/cock_near_ass_tail.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -243,7 +261,7 @@
 
 - type: panelInteraction
   id: HairFaceFuck
-  category: Penis
+  category: Mouth
   name: Трахать в рот держа за волосы
   userArouse: 15
   targetArouse: 10
@@ -267,6 +285,8 @@
   - контролирует голову $target, трахая в рот.
   - крепко держит $target за волосы и интенсивно трахает в рот.
   icon: _Arcane/Interface/ErpPanel/hair_face_fuck.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -287,6 +307,8 @@
   - зажимает член $target между ляжками, хвостом помогая.
   - трётся ляжками о член $target, хвостом обхватив.
   icon: _Arcane/Interface/ErpPanel/legs_cock_fuckt_tail.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -303,7 +325,7 @@
 
 - type: panelInteraction
   id: HornsBlowjobF
-  category: Penis
+  category: Head
   name: Лизать рог
   targetArouse: 10
   range: 1
@@ -317,6 +339,8 @@
   - медленно лижет кончик рога $target.
   - захватывает губами рог $target.
   icon: _Arcane/Interface/ErpPanel/horns_blowjob_female.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:SpeciesRequirement
     species:

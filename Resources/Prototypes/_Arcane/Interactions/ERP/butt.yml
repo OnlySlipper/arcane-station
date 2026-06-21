@@ -15,6 +15,8 @@
   - дразнит $target, проводя членом по ягодицам.
   - трётся членом о булки $target.
   icon: _Arcane/Interface/ErpPanel/cock_near_ass.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -37,6 +39,8 @@
   - водит руками по ягодицам $target круговыми движениями.
   - ласково мнёт попку $target.
   icon: _Arcane/Interface/ErpPanel/butt_massage.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: ButtTail
@@ -54,6 +58,8 @@
   - ласкает попу $target кончиком хвоста.
   - обвивает хвостом ягодицы $target.
   icon: _Arcane/Interface/ErpPanel/butt_tail.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:SpeciesRequirement
     species:
@@ -80,6 +86,8 @@
   - крепко хватает $target за булки.
   - обхватывает ягодицы $target руками.
   icon: _Arcane/Interface/ErpPanel/hands_on_butt.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: KissButt
@@ -98,6 +106,8 @@
   - осыпает поцелуями попку $target.
   - прижимается губами к ягодице $target.
   icon: _Arcane/Interface/ErpPanel/kiss_butt.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: SlapButt
@@ -118,6 +128,8 @@
   - звонко бьёт $target по попке!
   - отвешивает шлепок по ягодицам $target.
   icon: _Arcane/Interface/ErpPanel/slap_butt.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: HornsAssF
@@ -136,6 +148,8 @@
   - аккуратно скользит острым рогом по булкам $target.
   - проводит кончиком рога вдоль ягодиц $target.
   icon: _Arcane/Interface/ErpPanel/horns_ass_female.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:SpeciesRequirement
     species:

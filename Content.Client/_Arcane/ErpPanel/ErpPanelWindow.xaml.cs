@@ -18,6 +18,8 @@ namespace Content.Client._Arcane.ErpPanel;
 [GenerateTypedNameReferences]
 public sealed partial class ErpPanelWindow : FancyWindow
 {
+    private const string ErpInteractionTag = "RequiresERP";
+
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -331,6 +333,9 @@ public sealed partial class ErpPanelWindow : FancyWindow
     {
         var passed = true;
 
+        if (IsErpInteraction(interaction) && !CanUseErp(user, target))
+            return false;
+
         var transform = _entManager.System<TransformSystem>();
         if (!transform.InRange(user, target, interaction.Range))
             passed = false;
@@ -354,5 +359,24 @@ public sealed partial class ErpPanelWindow : FancyWindow
         }
 
         return passed;
+    }
+
+    private bool IsErpInteraction(PanelInteractionPrototype interaction)
+    {
+        return interaction.Tags.Contains(ErpInteractionTag);
+    }
+
+    private bool CanUseErp(EntityUid user, EntityUid target)
+    {
+        if (_entManager.TryGetComponent<ErpStatusComponent>(user, out var userStatus) &&
+            userStatus.Preference == ErpPreference.No)
+            return false;
+
+        if (user != target &&
+            _entManager.TryGetComponent<ErpStatusComponent>(target, out var targetStatus) &&
+            targetStatus.Preference == ErpPreference.No)
+            return false;
+
+        return true;
     }
 }

@@ -21,6 +21,8 @@
   - глубоко вводит пальцы в свою тугую и мокрую вагину, тихо постанывая.
   - дразняще водит подушечками пальцев по своим влажным складкам.
   icon: _Arcane/Interface/ErpPanel/pussy_fingering.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: vagina
@@ -48,6 +50,8 @@
   - скользит языком между влажных губ $target.
   - быстро водит языком по мокрой киске $target.
   icon: _Arcane/Interface/ErpPanel/pussy_lick.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: vagina
@@ -69,6 +73,8 @@
   - быстро трётся клитором о киску $target.
   - интенсивно двигается вагиной по мокрой вагине $target.
   icon: _Arcane/Interface/ErpPanel/pussy_scissors.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: vagina
@@ -93,6 +99,8 @@
   - нежно трогает влажную вагину $target.
   - аккуратно касается вагины $target.
   icon: _Arcane/Interface/ErpPanel/pussy_touch.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: vagina
@@ -114,6 +122,8 @@
   - медленно вводит хвост в мокрую вагину $target.
   - страстно трахает вагину $target хвостом.
   icon: _Arcane/Interface/ErpPanel/pussy_tail_fuck.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: vagina
@@ -143,6 +153,8 @@
   - медленно вводит игрушку в мокрую вагину $target.
   - аккуратно работает игрушкой во влагалище $target.
   icon: _Arcane/Interface/ErpPanel/toy_pussy.png
+  tags:
+  - RequiresERP
   targetRequirements:
   - !type:EroticOrganRequirement
     organ: vagina

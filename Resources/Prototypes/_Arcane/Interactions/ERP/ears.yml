@@ -30,6 +30,8 @@
   - нежно прикусывает мочку уха $target.
   - внезапно кусает $target за ушко.
   icon: _Arcane/Interface/ErpPanel/bite_ears_human.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: EarsKiss
@@ -48,6 +50,8 @@
   - прижимается губами к ушку $target.
   - целует $target за ухом.
   icon: _Arcane/Interface/ErpPanel/ears_kiss.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: PatEars

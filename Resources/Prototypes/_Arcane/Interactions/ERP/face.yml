@@ -13,6 +13,8 @@
   - ласково целует $target в щёчку.
   - мягко касается губами щеки $target.
   icon: _Arcane/Interface/ErpPanel/cheeks_kiss.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: CheeksKissBoth
@@ -29,6 +31,8 @@
   - нежно целует $target в левую, потом в правую щёку.
   - приветливо целует $target в обе щёчки.
   icon: _Arcane/Interface/ErpPanel/cheeks_kiss_both.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: CheeksPat
@@ -79,6 +83,8 @@
   - нежно прижимается губами к губам $target.
   - тихо целует $target в губы.
   icon: _Arcane/Interface/ErpPanel/gentle_kiss.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: KissLips
@@ -99,6 +105,8 @@
   - глубоко целует $target, не отпуская.
   - страстно прижимается губами к губам $target.
   icon: _Arcane/Interface/ErpPanel/kiss_lips.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: FaceRubCat
@@ -114,6 +122,8 @@
   - водит мордашкой по щеке $target.
   - мягко трётся о лицо $target.
   icon: _Arcane/Interface/ErpPanel/face_rub_cat.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:SpeciesRequirement
     species:
@@ -138,6 +148,8 @@
   - усаживается на лицо $target.
   - опускается на лицо $target, обхватив ляжками голову.
   icon: _Arcane/Interface/ErpPanel/face_sitting.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: vagina
@@ -160,6 +172,8 @@
   - проводит членом по лицу $target.
   - несильно шлёпает $target членом по щеке.
   icon: _Arcane/Interface/ErpPanel/face_dick_slap.png
+  tags:
+  - RequiresERP
   userRequirements:
   - !type:EroticOrganRequirement
     organ: penis
@@ -181,6 +195,8 @@
   - сжимает голову $target между ног.
   - удерживает лицо $target ляжками.
   icon: _Arcane/Interface/ErpPanel/legs_squeeze_face.png
+  tags:
+  - RequiresERP
 
 - type: panelInteraction
   id: Mewing

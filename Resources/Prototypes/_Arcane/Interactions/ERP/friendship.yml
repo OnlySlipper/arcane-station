@@ -1,6 +1,6 @@
 - type: panelInteraction
   id: Handshake
-  category: Friendship
+  category: Hands
   name: Пожать руку
   range: 1
   sounds:
@@ -15,7 +15,7 @@
 
 - type: panelInteraction
   id: FingerTap
-  category: Friendship
+  category: Back
   name: Массировать спину
   range: 1
   sounds:
@@ -34,7 +34,7 @@
 
 - type: panelInteraction
   id: TailPat
-  category: Friendship
+  category: Tail
   name: Погладить хвост
   range: 1
   sounds:
@@ -61,7 +61,7 @@
 
 - type: panelInteraction
   id: TailHug
-  category: Friendship
+  category: Tail
   name: Сплестись хвостами
   range: 1
   sounds:
@@ -95,7 +95,7 @@
 
 - type: panelInteraction
   id: HighFive
-  category: Friendship
+  category: Hands
   name: Дать пять
   range: 1
   sounds:
@@ -112,7 +112,7 @@
 
 - type: panelInteraction
   id: FriendlyFlyingKiss
-  category: Friendship
+  category: Face
   name: Послать воздушный поцелуй
   sounds:
   - /Audio/_Arcane/Interactions/kiss1.ogg
@@ -127,7 +127,7 @@
 
 - type: panelInteraction
   id: FriendlyNoseBoop
-  category: Friendship
+  category: Face
   name: Дать по носику
   sounds:
   - /Audio/_Arcane/Interactions/pat1.ogg
@@ -141,7 +141,7 @@
 
 - type: panelInteraction
   id: FriendlyTailPull
-  category: Friendship
+  category: Tail
   name: Потянуть за хвост
   sounds:
   - /Audio/_Arcane/Interactions/pat1.ogg
@@ -164,7 +164,7 @@
 
 - type: panelInteraction
   id: KissHand
-  category: Friendship
+  category: Hands
   name: Поцеловать руку
   sounds:
   - /Audio/_Arcane/Interactions/kiss1.ogg
@@ -179,7 +179,7 @@
 
 - type: panelInteraction
   id: PatShoulder
-  category: Friendship
+  category: Shoulders
   name: Похлопать по плечу
   sounds:
   - /Audio/_Arcane/Interactions/pat1.ogg
@@ -194,7 +194,7 @@
 
 - type: panelInteraction
   id: PetHead
-  category: Friendship
+  category: Head
   name: Погладить по голове
   sounds:
   - /Audio/_Arcane/Interactions/friction1.ogg
@@ -210,9 +210,8 @@
 
 - type: panelInteraction
   id: PlayfulNibble
-  category: Friendship
+  category: Neck
   name: Игриво укусить
-  targetArouse: 3
   sounds:
   - /Audio/_Arcane/Interactions/pat1.ogg
   messages:
@@ -225,7 +224,7 @@
 
 - type: panelInteraction
   id: HornsPat
-  category: Friendship
+  category: Head
   name: Погладить рога
   sounds:
   - /Audio/_Arcane/Interactions/friction1.ogg
@@ -244,7 +243,7 @@
 
 - type: panelInteraction
   id: Kitty
-  category: Friendship
+  category: Face
   name: Потереться мордочкой
   sounds:
   - /Audio/_Arcane/Interactions/friction1.ogg
