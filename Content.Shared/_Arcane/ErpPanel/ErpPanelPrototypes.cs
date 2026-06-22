@@ -5,6 +5,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Arcane.ErpPanel;
 
+public static class ErpPanelConstants
+{
+    public const string ErpInteractionTag = "RequiresERP";
+}
+
 [Prototype]
 public sealed partial class PanelInteractionPrototype : IPrototype
 {

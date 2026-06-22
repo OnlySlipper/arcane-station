@@ -20,8 +20,6 @@ namespace Content.Server._Arcane.ErpPanel;
 
 public sealed partial class ErpPanelSystem : EntitySystem
 {
-    private const string ErpInteractionTag = "RequiresERP";
-
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -269,7 +267,7 @@ public sealed partial class ErpPanelSystem : EntitySystem
 
     private bool IsErpInteraction(PanelInteractionPrototype interaction)
     {
-        return interaction.Tags.Contains(ErpInteractionTag);
+        return interaction.Tags.Contains(ErpPanelConstants.ErpInteractionTag);
     }
 
     private bool CanUseErp(EntityUid user, EntityUid target)

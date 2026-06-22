@@ -18,8 +18,6 @@ namespace Content.Client._Arcane.ErpPanel;
 [GenerateTypedNameReferences]
 public sealed partial class ErpPanelWindow : FancyWindow
 {
-    private const string ErpInteractionTag = "RequiresERP";
-
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -363,7 +361,7 @@ public sealed partial class ErpPanelWindow : FancyWindow
 
     private bool IsErpInteraction(PanelInteractionPrototype interaction)
     {
-        return interaction.Tags.Contains(ErpInteractionTag);
+        return interaction.Tags.Contains(ErpPanelConstants.ErpInteractionTag);
     }
 
     private bool CanUseErp(EntityUid user, EntityUid target)
