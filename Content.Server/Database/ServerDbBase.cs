@@ -137,6 +137,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
+using Content.Shared._Arcane.ERP;
 using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
@@ -412,6 +413,8 @@ namespace Content.Server.Database
 
             var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
 
+            var erpPreference = (ErpPreference) profile.ErpPreference; // Arcane
+
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
@@ -451,7 +454,8 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                barkVoice // Goob Station - Barks
+                barkVoice, // Goob Station - Barks
+                erpPreference // Arcane
             );
         }
 
@@ -519,6 +523,7 @@ namespace Content.Server.Database
             );
 
             profile.BarkVoice = humanoid.BarkVoice; // Goob Station - Barks
+            profile.ErpPreference = (int) humanoid.ErpPreference; // Arcane
 
             profile.Loadouts.Clear();
 
@@ -2033,6 +2038,41 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             return await db.DbContext.RMCLinkedAccounts.AnyAsync(l => l.PlayerId == player, cancel);
 
         }
+
+        // arcane discord link start
+        public async Task<(bool Linked, bool HasPlayerRole)> GetLinkedAccountStatus(Guid player, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            var linked = await db.DbContext.RMCLinkedAccounts
+                .Include(l => l.Discord)
+                .FirstOrDefaultAsync(l => l.PlayerId == player, cancel);
+
+            return linked == null
+                ? (false, false)
+                : (true, linked.Discord.HasPlayerRole);
+        }
+
+        public async Task<bool> UnlinkDiscordAccount(Guid player, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            var linked = await db.DbContext.RMCLinkedAccounts
+                .FirstOrDefaultAsync(l => l.PlayerId == player, cancel);
+
+            if (linked == null)
+                return false;
+
+            db.DbContext.RMCLinkedAccounts.Remove(linked);
+
+            var linkingCode = await db.DbContext.RMCLinkingCodes
+                .FirstOrDefaultAsync(l => l.PlayerId == player, cancel);
+
+            if (linkingCode != null)
+                db.DbContext.RMCLinkingCodes.Remove(linkingCode);
+
+            await db.DbContext.SaveChangesAsync(cancel);
+            return true;
+        }
+        // arcane discord link end
 
         public async Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)
         {

@@ -1,0 +1,14 @@
+- type: infinityDormCategory
+  id: General
+  color: "#8a6e31aa"
+  name: Классика
+
+- type: infinityDormCategory
+  id: Unusual
+  color: "#7a2d40aa"
+  name: Необычное
+
+- type: infinityDormCategory
+  id: Exotic
+  color: "#3d8349aa"
+  name: Экзотическое
