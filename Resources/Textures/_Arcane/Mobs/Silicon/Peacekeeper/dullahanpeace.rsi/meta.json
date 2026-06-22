@@ -26,10 +26,6 @@
         {
             "name": "peacekeeper_l",
             "directions": 4
-        },
-        {
-            "name": "blank",
-            "directions": 4
         }
     ]
 }
