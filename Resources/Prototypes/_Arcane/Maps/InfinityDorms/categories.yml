@@ -2,13 +2,16 @@
   id: General
   color: "#8a6e31aa"
   name: Классика
+  priority: 2
 
 - type: infinityDormCategory
   id: Unusual
   color: "#7a2d40aa"
   name: Необычное
+  priority: 1
 
 - type: infinityDormCategory
   id: Exotic
   color: "#3d8349aa"
   name: Экзотическое
+  priority: 0
