@@ -12,6 +12,12 @@ public sealed partial class ACCVars
         CVarDef.Create("vote.auto_voting_enabled", false, CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
+    /// Включена ли автоматическая очистка мусора.
+    /// </summary>
+    public static readonly CVarDef<bool> AutoCleaningEnabled =
+        CVarDef.Create("optimization.auto_cleaning", false, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
     /// Должен ли клиент использовать ТТС вместо барков.
     /// </summary>
     public static readonly CVarDef<bool> UseTTS =
@@ -28,4 +34,10 @@ public sealed partial class ACCVars
     /// </summary>
     public static readonly CVarDef<int> MaxUserInfinityDorms =
         CVarDef.Create("infinity_dorms.max_per_user", 2, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Должна ли система автоматически добавлять пацифист после конца раунда.
+    /// </summary>
+    public static readonly CVarDef<bool> EndRoundPacification =
+        CVarDef.Create("game.end_round_pacifism", true, CVar.SERVERONLY | CVar.ARCHIVE);
 }

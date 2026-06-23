@@ -97,7 +97,7 @@ public sealed partial class TTSSystem : EntitySystem
         if (!hasRecipients)
             return;
 
-        var soundData = await GenerateTTS(message, speaker, "radio");
+        var soundData = await GenerateTTS(message, speaker, "radio_headset"); // Arcane
         if (soundData is null) return;
         RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), recipients);
     }

@@ -137,6 +137,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
+using Content.Shared._Arcane.ERP;
 using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
@@ -444,6 +445,8 @@ namespace Content.Server.Database
 
             var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
 
+            var erpPreference = (ErpPreference) profile.ErpPreference; // Arcane
+
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
@@ -483,7 +486,8 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                barkVoice // Goob Station - Barks
+                barkVoice, // Goob Station - Barks
+                erpPreference // Arcane
             );
         }
 
@@ -551,6 +555,7 @@ namespace Content.Server.Database
             );
 
             profile.BarkVoice = humanoid.BarkVoice; // Goob Station - Barks
+            profile.ErpPreference = (int) humanoid.ErpPreference; // Arcane
 
             profile.Loadouts.Clear();
 

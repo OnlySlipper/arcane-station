@@ -79,4 +79,10 @@ public sealed partial class InfinityDormCategoryPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public string Name = string.Empty;
+
+    /// <summary>
+    /// Приоритет, по которому будут сортироваться дорматории в UI. Больше - ниже категория.
+    /// </summary>
+    [DataField(required: true)]
+    public int Priority;
 }

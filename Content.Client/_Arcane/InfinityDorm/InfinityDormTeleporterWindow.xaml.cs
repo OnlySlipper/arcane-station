@@ -88,24 +88,22 @@ public sealed partial class InfinityDormTeleporterWindow : FancyWindow
         RoomsContainer.RemoveAllChildren();
 
         var rooms = _proto.EnumeratePrototypes<InfinityDormPrototype>();
-        var categories = _proto.EnumeratePrototypes<InfinityDormCategoryPrototype>();
 
-        foreach (var category in categories)
+        foreach (var room in rooms.OrderBy(r => _proto.Index<InfinityDormCategoryPrototype>(r.Category.Id).Priority))
         {
-            foreach (var room in rooms.Where(r => r.Category.Id == category.ID))
-            {
-                var roomButton = new Button()
-                {
-                    Name = room.ID,
-                    Text = Loc.GetString("infinity-dorm-name", ("category", category.Name), ("name", room.ID)),
-                    ToolTip = Loc.GetString("infinity-dorm-desc", ("desc", room.Description), ("author", room.Author)),
-                    ModulateSelfOverride = category.Color,
-                    Margin = new Thickness(0, 0, 0, 3)
-                };
-                roomButton.OnPressed += args => OnPressedRoomButton(args);
+            var category = _proto.Index<InfinityDormCategoryPrototype>(room.Category.Id);
 
-                RoomsContainer.AddChild(roomButton);
-            }
+            var roomButton = new Button()
+            {
+                Name = room.ID,
+                Text = Loc.GetString("infinity-dorm-name", ("category", category.Name), ("name", room.Title)),
+                ToolTip = Loc.GetString("infinity-dorm-desc", ("desc", room.Description), ("author", room.Author)),
+                ModulateSelfOverride = category.Color,
+                Margin = new Thickness(0, 0, 0, 3)
+            };
+            roomButton.OnPressed += args => OnPressedRoomButton(args);
+
+            RoomsContainer.AddChild(roomButton);
         }
     }
 
