@@ -1,7 +1,7 @@
-gs-balanceui-shop-buy-token-1000-holochips = Токен на 1000 голочипов - { $price }§
-gs-balanceui-shop-token-1000-holochips = Токен на тысячу голочипов
-gs-balanceui-shop-buy-token-1000-holochips-desc = Админ выдаст вам тысячу голочипов - корпоративной валюты.
-gs-balanceui-remark-token-1000-holochips = Куплен токен на 1000 голочипов - НЕ ИСПОЛЬЗОВАНО
+gs-balanceui-shop-buy-token-5000-holochips = Токен на 5000 голочипов - { $price }§
+gs-balanceui-shop-token-5000-holochips = Токен на пять тысяч голочипов
+gs-balanceui-shop-buy-token-5000-holochips-desc = Админ выдаст вам пять тысяч голочипов - корпоративной валюты.
+gs-balanceui-remark-token-5000-holochips = Куплен токен на 5000 голочипов - НЕ ИСПОЛЬЗОВАНО
 
 gs-balanceui-shop-buy-token-cloth = Токен на одежду - { $price }§
 gs-balanceui-shop-token-cloth = Токен на необычную одежду

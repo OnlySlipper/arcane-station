@@ -1,17 +1,17 @@
 - type: tokenListing
   id: AdditionalBalanceToken
-  name: gs-balanceui-shop-buy-token-1000-holochips
-  label: gs-balanceui-shop-token-1000-holochips
-  description: gs-balanceui-shop-buy-token-1000-holochips-desc
-  price: 1000
-  adminNote: gs-balanceui-remark-token-1000-holochips
+  name: gs-balanceui-shop-buy-token-5000-holochips
+  label: gs-balanceui-shop-token-5000-holochips
+  description: gs-balanceui-shop-buy-token-5000-holochips-desc
+  price: 700
+  adminNote: gs-balanceui-remark-token-5000-holochips
 
 - type: tokenListing
   id: ClothingToken
   name: gs-balanceui-shop-buy-token-cloth
   label: gs-balanceui-shop-token-cloth
   description: gs-balanceui-shop-buy-token-cloth-desc
-  price: 800
+  price: 600
   adminNote: gs-balanceui-remark-token-cloth
 
 - type: tokenListing
@@ -19,7 +19,7 @@
   name: gs-balanceui-shop-buy-token-be-antag-target
   label: gs-balanceui-shop-token-be-antag-target
   description: gs-balanceui-shop-buy-token-be-antag-target-desc
-  price: 3000
+  price: 1000
   adminNote: gs-balanceui-remark-token-be-antag-target
 
 - type: tokenListing
