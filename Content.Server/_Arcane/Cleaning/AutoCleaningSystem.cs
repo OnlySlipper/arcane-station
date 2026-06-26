@@ -23,12 +23,10 @@ public sealed partial class AutoCleaningSystem : EntitySystem
     private bool _isActive = false;
     private bool _isWarned = false;
     private static TimeSpan _nextUpdate = TimeSpan.MaxValue;
-    private static TimeSpan _updateInterval = TimeSpan.FromMinutes(30);
-    private static TimeSpan _warningWaiting = TimeSpan.FromSeconds(30);
+    private static TimeSpan _updateInterval = TimeSpan.FromMinutes(20);
+    private static TimeSpan _warningWaiting = TimeSpan.FromSeconds(10);
     private static HashSet<ProtoId<TagPrototype>> _cleaningTags = ["Trash", "Cartridge"];
     private static HashSet<ProtoId<TagPrototype>> _disallowedTags = ["Cigarette", "CigPack", "Syringe", "LightTube", "LightBulb"];
-
-    private const int MaxCleanPerCycle = 800;
 
     public override void Initialize()
     {
@@ -147,18 +145,10 @@ public sealed partial class AutoCleaningSystem : EntitySystem
             // Объект лежит на полу — удаляем
             QueueDel(uid);
             deletedCount++;
-
-            // Защита от лагов
-            if (deletedCount >= MaxCleanPerCycle)
-                break;
         }
 
         // Подробное логирование
         _sawmill.Debug($"Cleaning stats: deleted={deletedCount}, skipped (container={skippedContainer}, anchored={skippedAnchored}, disallowed={skippedDisallowed})");
-
-        if (deletedCount >= MaxCleanPerCycle)
-            _sawmill.Warning($"Reached max clean limit ({MaxCleanPerCycle}). Remaining items will be cleaned next cycle.");
-
         return deletedCount;
     }
 
