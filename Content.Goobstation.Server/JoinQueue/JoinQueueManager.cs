@@ -124,28 +124,29 @@ public sealed class JoinQueueManager : IJoinQueueManager
     {
         if (e.NewStatus == SessionStatus.Disconnected)
         {
-            var wasInPatronQueue = _patronQueue.Remove(e.Session);
-            var wasInQueue = !wasInPatronQueue && _queue.Remove(e.Session);
+            var oldPosition = _queue.IndexOf(e.Session);
+            var wasInQueue = oldPosition >= 0;
 
-            // Arcane-start
+            if (wasInQueue)
+                _queue.RemoveAt(oldPosition);
+
             if (e.OldStatus == SessionStatus.InGame)
                 _bypassUsers.Remove(e.Session.UserId);
-            // Arcane-end
 
-            if (wasInPatronQueue || wasInQueue)
+            if (wasInQueue)
             {
                 var graceSeconds = _configuration.GetCVar(GoobCVars.QueueReconnectGraceSeconds);
                 if (graceSeconds > 0)
                 {
                     _reservations[e.Session.UserId] = new QueueReservation(
                         DateTime.UtcNow,
-                        wasInPatronQueue);
+                        oldPosition);
                 }
 
                 QueueTimings.WithLabels("Unwaited").Observe((DateTime.UtcNow - e.Session.ConnectedTime).TotalSeconds);
             }
 
-            if (!wasInPatronQueue && !wasInQueue && e.OldStatus != SessionStatus.InGame)
+            if (!wasInQueue && e.OldStatus != SessionStatus.InGame)
                 return;
 
             ProcessQueue(e.Session.ConnectedTime);
@@ -164,9 +165,9 @@ public sealed class JoinQueueManager : IJoinQueueManager
             return;
 
         var isPrivileged = await _connection.HasPrivilegedJoin(session.UserId);
-        var isPatron = _linkAccount.GetPatron(session)?.Tier != null;
-        var currentOnline = _player.PlayerCount - 1 - _bypassUsers.Count; // Arcane
+        var currentOnline = _player.PlayerCount - 1 - _bypassUsers.Count;
         var haveFreeSlot = currentOnline < _configuration.GetCVar(CCVars.SoftMaxPlayers);
+
         if (isPrivileged || haveFreeSlot)
         {
             SendToGame(session);
@@ -174,7 +175,7 @@ public sealed class JoinQueueManager : IJoinQueueManager
 
             if (isPrivileged && !haveFreeSlot)
             {
-                _bypassUsers.Add(session.UserId); // Arcane
+                _bypassUsers.Add(session.UserId);
                 QueueBypassCount.Inc();
             }
 
@@ -186,53 +187,35 @@ public sealed class JoinQueueManager : IJoinQueueManager
             var graceSeconds = _configuration.GetCVar(GoobCVars.QueueReconnectGraceSeconds);
             if ((DateTime.UtcNow - reservation.DisconnectTime).TotalSeconds <= graceSeconds)
             {
-                if (reservation.WasPatron && _patreonIsEnabled)
-                    _patronQueue.Insert(0, session);
-                else
-                    _queue.Insert(0, session);
-
+                _queue.Insert(Math.Min(reservation.QueuePosition, _queue.Count), session);
                 ProcessQueue(session.ConnectedTime);
                 return;
             }
         }
 
-        if (isPatron && _patreonIsEnabled)
-            _patronQueue.Add(session);
-        else
-            _queue.Add(session);
-
+        _queue.Add(session);
         ProcessQueue(session.ConnectedTime);
     }
 
     private void ProcessQueue(DateTime connectedTime)
     {
         var players = ActualPlayersCount;
-
         var softMax = _configuration.GetCVar(CCVars.SoftMaxPlayers);
 
-        while (players < softMax && (_patronQueue.Count > 0 || _queue.Count > 0))
+        while (players < softMax && _queue.Count > 0)
         {
-            ICommonSession session;
-            if (_patronQueue.Count > 0)
-            {
-                session = _patronQueue[0];
-                _patronQueue.RemoveAt(0);
-            }
-            else
-            {
-                session = _queue[0];
-                _queue.RemoveAt(0);
-            }
-
+            var session = _queue[0];
+            _queue.RemoveAt(0);
             RecordWaitTime(session);
             SendToGame(session);
-            QueueTimings.WithLabels("Waited").Observe((DateTime.UtcNow - connectedTime).TotalSeconds);
+            QueueTimings.WithLabels("Waited")
+                .Observe((DateTime.UtcNow - connectedTime).TotalSeconds);
             players++;
         }
 
         CleanupExpiredReservations();
         SendUpdateMessages();
-        QueueCount.Set(_queue.Count + _patronQueue.Count);
+        QueueCount.Set(_queue.Count);
     }
 
     private void RecordWaitTime(ICommonSession session)
@@ -341,5 +324,5 @@ public sealed class JoinQueueManager : IJoinQueueManager
         Timer.Spawn(0, () => _player.JoinGame(session));
     }
 
-    private sealed record QueueReservation(DateTime DisconnectTime, bool WasPatron);
+    private sealed record QueueReservation(DateTime DisconnectTime, int QueuePosition);
 }
