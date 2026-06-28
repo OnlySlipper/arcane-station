@@ -28,7 +28,7 @@ public sealed partial class SponsorRequirementLoadoutEffect : LoadoutEffect
 
         var isSponsor = false;
         foreach (var tier in Tiers)
-            isSponsor = sponsor.HasSponsor(session, tier) ? true : false;
+            isSponsor = sponsor.HasSponsor(session, tier) ? true : isSponsor;
 
         reason = FormattedMessage.FromUnformatted(Loc.GetString("loadout-sponsor-requirement"));
         return isSponsor;
