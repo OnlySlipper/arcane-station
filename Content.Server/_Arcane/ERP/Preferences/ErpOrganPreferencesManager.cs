@@ -12,6 +12,7 @@ using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Log;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Arcane.ERP.Preferences;
@@ -26,8 +27,9 @@ public sealed class ErpOrganPreferencesManager : IPostInjectInit
     [Dependency] private readonly IServerPreferencesManager _prefs = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
 
-    private readonly ISawmill _log = Logger.GetSawmill("erp.prefs");
+    private ISawmill _log = default!;
 
     private readonly Dictionary<NetUserId, Dictionary<int, ErpOrganPreferences>> _cache = new();
 
@@ -35,6 +37,7 @@ public sealed class ErpOrganPreferencesManager : IPostInjectInit
 
     public void PostInject()
     {
+        _log = _logManager.GetSawmill("erp.prefs");
         _net.RegisterNetMessage<MsgErpOrganPreferences>();
         _net.RegisterNetMessage<MsgUpdateErpOrganPreferences>(HandleUpdate);
 
