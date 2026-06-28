@@ -124,7 +124,7 @@ public static class ErpOrganEditorDefinitions
         var result = new List<ErpOrganEditorDefinition>();
         foreach (var slotId in ErpOrganSlots.EditorVisible)
         {
-            if (ErpOrganSlots.SexFilter.TryGetValue(slotId, out var allowed) && !allowed.Contains(sex))
+            if (ErpOrganSlots.SexFilter.TryGetValue(slotId, out var allowed) && Array.IndexOf(allowed, sex) < 0)
                 continue;
 
             var variants = ErpOrganSlots.Variants.GetValueOrDefault(slotId) ?? [];
