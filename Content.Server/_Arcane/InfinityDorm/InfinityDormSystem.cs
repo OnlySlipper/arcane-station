@@ -102,7 +102,7 @@ public sealed partial class InfinityDormSystem : EntitySystem
 
     private void EnsureDormsMap()
     {
-        if (_map.MapExists(_dormsMapId) || _dormsMapId != MapId.Nullspace)
+        if (_map.MapExists(_dormsMapId))
             return;
 
         _map.CreateMap(out _dormsMapId);
