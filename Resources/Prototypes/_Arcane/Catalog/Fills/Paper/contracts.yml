@@ -14,6 +14,7 @@
   components:
     - type: Paper
       content: doc-text-employment-contract-security
+      editingDisabled: true
 
 - type: entity
   parent: BaseContract
@@ -23,6 +24,7 @@
   components:
     - type: Paper
       content: doc-text-employment-contract-cargo
+      editingDisabled: true
 
 - type: entity
   parent: BaseContract
@@ -32,6 +34,7 @@
   components:
     - type: Paper
       content: doc-text-employment-contract-engineering
+      editingDisabled: true
 
 - type: entity
   parent: BaseContract
@@ -41,6 +44,7 @@
   components:
     - type: Paper
       content: doc-text-employment-contract-medical
+      editingDisabled: true
 
 - type: entity
   parent: BaseContract
@@ -50,6 +54,7 @@
   components:
     - type: Paper
       content: doc-text-employment-contract-rnd
+      editingDisabled: true
 
 - type: entity
   parent: BaseContract
@@ -59,4 +64,5 @@
   components:
     - type: Paper
       content: doc-text-employment-contract-service
+      editingDisabled: true
 
